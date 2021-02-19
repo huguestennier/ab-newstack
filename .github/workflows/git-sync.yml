@@ -12,3 +12,4 @@ jobs:
         source_repo: "huguestennier/ab-newstack"
         source_branch: "master"
         destination_branch: "pricing-b"
+        github_token: ${{ secrets.PAT }}
