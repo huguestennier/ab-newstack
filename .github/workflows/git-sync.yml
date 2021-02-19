@@ -1,13 +1,14 @@
 on: push
 jobs:
-  git-sync:
+  repo-sync:
     runs-on: ubuntu-latest
     steps:
-      - name: git-sync
-        uses: wei/git-sync@v3
-        with:
-          source_repo: "git@github.com:huguestennier/ab-newstack.git"
-          source_branch: "master"
-          destination_repo: "git@github.com:huguestennier/ab-newstack.git"
-          destination_branch: "pricing-b"
-          ssh_private_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC9H1wylEvbYekaDs7u9dLlfEeTeL3jBgjpjeVXlbQj6VQxeNdPEoJ8PZYHY0x5PZWa/yl7DtObb3TSadLGqiW7QB142+N+UvzP5VYBDfnp0Cdqyqf+GgQUGmPBc0EoduQPxjAPjLScwnoBej5IkcKDE+mCj1IkwOLQrbhqCWVnLQo8LnUaB6y8s5omsgNkrJ5EHlKm2CgzFHB7tT+px3jdtTf2v7nVh+zOjpz2dwztb+f+lqOaXo1YDdqKlygSfQSamlY95El8ssjG+TlopCrV7lAksRvimsAzKClLZzEE5r8TudJ+wIbhhfGImcibVR4Ln9G39uTuQcTiWl9bupi/7V/z/y/p7TadXrNOEBOp4dwcJOVVriAYKRJMHuAIofv/h6ZqVxCXdiJYf5ctWutqRH79jXnZQ0+34A+tAuUdJqsjcviI9/dgNBM8xV6VUV5tmunRkHAGGdnxSdWQAmQCUbju/noI0l3UNufP5OXS7CQakeTX0zL2yHlY7EfYjGeQA3pCpsejYkMxk+zAxxEaCUHXBo/dKeZhgCIXWkN/cAEOHRC80mzzEloh3yhvrwRl+fDYjESve3DeTaimkV5xdFjh3dCE+8usp1gXYVQw3j8x8LC/RVPbEoRT35CoeKRAKI2soZJ73EdjJnCd/M3vNRY16TgUGjhMtpIjp6uQYw== huguestennier@gmail.com"
+    - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+    - name: repo-sync
+      uses: repo-sync/github-sync@v2
+      with:
+        source_repo: "huguestennier/ab-newstack"
+        source_branch: "master"
+        destination_branch: "pricing-b"
